@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  
+    
+</head>
+<body>
+
+    <h2>Job Application Tracker</h2>
+  
+    <div class="form-section">
+      <form id="applicationForm">
+        <input type="hidden" id="editIndex" value="-1">
+  
+        <label>Company Name:</label>
+        <input type="text" id="company" required>
+  
+        <label>Location:</label>
+        <input type="text" id="location" required>
+  
+        <label>Profile Applied:</label>
+        <input type="text" id="profile" required>
+  
+        <label>Mode of Work:</label>
+        <select id="mode" required>
+          <option value="Remote">Remote</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Onsite">Onsite</option>
+        </select>
+  
+        <label>Date:</label>
+        <input type="date" id="date" required>
+  
+        <label>Applied By:</label>
+        <select id="applied_by" required>
+          <option value="Me">Me</option>
+          <option value="Other">Other</option>
+        </select>
+  
+        <label>Status:</label>
+        <select id="status" required>
+          <option value="Applied">Applied</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+  
+        <label>Resume Used:</label>
+        <input list="resumeOptions" id="resume" required>
+        <datalist id="resumeOptions"></datalist>
+  
+        <label>Job Link:</label>
+        <input type="url" id="link" placeholder="https://example.com/job" required>
+  
+        <button type="submit" id="submitButton" class="btn">Submit</button>
+        <button type="button" id="cancelEdit" class="btn delete-btn hidden">Cancel Edit</button>
+      </form>
+    </div>
+  
+    <div class="actions">
+      <div style="flex: 1;">
+        <label>Search by Company:</label>
+        <input type="text" id="searchCompany" placeholder="Search...">
+      </div>
+      <div>
+        <label>Status Filter:</label>
+        <select id="statusFilter">
+          <option value="All">All</option>
+          <option value="Applied">Applied</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+      <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+    </div>
+  
+    <table id="applicationsTable">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Profile</th>
+          <th>Mode</th>
+          <th>Date</th>
+          <th>Applied By</th>
+          <th>Status</th>
+          <th>Resume</th>
+          <th>Link</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
