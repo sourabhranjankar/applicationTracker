@@ -25,13 +25,14 @@ function loadApplications() {
     row.innerHTML = `
       <td>${app.company}</td>
       <td>${app.location}</td>
-      <td>${app.profile}</td>
       <td>${app.mode}</td>
+      <td>${app.role}</td>
+      <td><a href="${app.link}" target="_blank">View</a></td>
       <td>${app.date}</td>
+      <td>${app.applied_through}</td>
+      <td>${app.resume}</td>
       <td>${app.applied_by}</td>
       <td>${app.status}</td>
-      <td>${app.resume}</td>
-      <td><a href="${app.link}" target="_blank">View</a></td>
       <td>
         <button class="btn edit-btn" onclick="editApplication(${index})">Edit</button>
         <button class="btn delete-btn" onclick="deleteApplication(${index})">Delete</button>
@@ -40,7 +41,7 @@ function loadApplications() {
     tableBody.appendChild(row);
   });
 
-  // Resume suggestion list
+  // Update resume suggestion list
   resumeOptions.innerHTML = "";
   [...resumeSet].forEach(res => {
     const option = document.createElement("option");
@@ -56,13 +57,14 @@ form.addEventListener("submit", function (e) {
   const application = {
     company: document.getElementById("company").value,
     location: document.getElementById("location").value,
-    profile: document.getElementById("profile").value,
     mode: document.getElementById("mode").value,
+    role: document.getElementById("role").value,
+    link: document.getElementById("link").value,
     date: document.getElementById("date").value,
-    applied_by: document.getElementById("applied_by").value,
-    status: document.getElementById("status").value,
+    applied_through: document.getElementById("applied_through").value,
     resume: document.getElementById("resume").value,
-    link: document.getElementById("link").value
+    applied_by: document.getElementById("applied_by").value,
+    status: document.getElementById("status").value
   };
 
   const applications = JSON.parse(localStorage.getItem("applications")) || [];
@@ -78,10 +80,7 @@ form.addEventListener("submit", function (e) {
   localStorage.setItem("applications", JSON.stringify(applications));
   form.reset();
   document.getElementById("editIndex").value = -1;
-
-  // Reset date after form submit
   setTodayAsDefaultDate();
-
   loadApplications();
 });
 
@@ -99,13 +98,14 @@ function editApplication(index) {
   document.getElementById("editIndex").value = index;
   document.getElementById("company").value = app.company;
   document.getElementById("location").value = app.location;
-  document.getElementById("profile").value = app.profile;
   document.getElementById("mode").value = app.mode;
+  document.getElementById("role").value = app.role;
+  document.getElementById("link").value = app.link;
   document.getElementById("date").value = app.date;
+  document.getElementById("applied_through").value = app.applied_through;
+  document.getElementById("resume").value = app.resume;
   document.getElementById("applied_by").value = app.applied_by;
   document.getElementById("status").value = app.status;
-  document.getElementById("resume").value = app.resume;
-  document.getElementById("link").value = app.link;
 
   submitButton.textContent = "Update";
   cancelEditButton.classList.remove("hidden");
@@ -116,8 +116,6 @@ cancelEditButton.addEventListener("click", function () {
   document.getElementById("editIndex").value = -1;
   submitButton.textContent = "Submit";
   cancelEditButton.classList.add("hidden");
-
-  // Reset today's date after cancel
   setTodayAsDefaultDate();
 });
 
@@ -147,12 +145,10 @@ function setTodayAsDefaultDate() {
 statusFilter.addEventListener("change", loadApplications);
 searchCompany.addEventListener("input", loadApplications);
 
-// Run on page load
+// On load
 window.onload = function () {
-  // Only set default date if not editing
   if (parseInt(document.getElementById("editIndex").value) === -1) {
     setTodayAsDefaultDate();
   }
-
   loadApplications();
 };

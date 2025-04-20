@@ -4,93 +4,121 @@
   <meta charset="UTF-8" />
   <title>Job Application Tracker</title>
   <link rel="stylesheet" href="style.css">
-  
-    
 </head>
 <body>
 
-    <h2>Job Application Tracker</h2>
-  
-    <div class="form-section">
-      <form id="applicationForm">
-        <input type="hidden" id="editIndex" value="-1">
-  
+  <h2>Job Application Tracker</h2>
+
+  <div class="form-section">
+    <form id="applicationForm">
+      <input type="hidden" id="editIndex" value="-1" />
+
+      <div>
         <label>Company Name:</label>
-        <input type="text" id="company" required>
-  
+        <input type="text" id="company" required />
+      </div>
+
+      <div>
         <label>Location:</label>
-        <input type="text" id="location" required>
-  
-        <label>Profile Applied:</label>
-        <input type="text" id="profile" required>
-  
+        <input type="text" id="location" required />
+      </div>
+
+      <div>
         <label>Mode of Work:</label>
         <select id="mode" required>
           <option value="Remote">Remote</option>
           <option value="Hybrid">Hybrid</option>
           <option value="Onsite">Onsite</option>
         </select>
-  
-        <label>Date:</label>
-        <input type="date" id="date" required>
-  
+      </div>
+
+      <div>
+        <label>Role:</label>
+        <input type="text" id="role" required />
+      </div>
+
+      <div class="full-width">
+        <label>Job Link:</label>
+        <input type="url" id="link" placeholder="https://example.com/job" required />
+      </div>
+
+      <div>
+        <label>Date of Application:</label>
+        <input type="date" id="date" required />
+      </div>
+
+      <div>
+        <label>Applied Through:</label>
+        <input type="text" id="applied_through" placeholder="LinkedIn, Referral, etc." required />
+      </div>
+
+      <div>
+        <label>Resume Name:</label>
+        <input list="resumeOptions" id="resume" required />
+        <datalist id="resumeOptions"></datalist>
+      </div>
+
+      <div>
         <label>Applied By:</label>
         <select id="applied_by" required>
           <option value="Me">Me</option>
           <option value="Other">Other</option>
         </select>
-  
+      </div>
+
+      <div>
         <label>Status:</label>
         <select id="status" required>
           <option value="Applied">Applied</option>
+          <option value="Interview">Interview</option>
           <option value="Rejected">Rejected</option>
+          <option value="Hired">Hired</option>
         </select>
-  
-        <label>Resume Used:</label>
-        <input list="resumeOptions" id="resume" required>
-        <datalist id="resumeOptions"></datalist>
-  
-        <label>Job Link:</label>
-        <input type="url" id="link" placeholder="https://example.com/job" required>
-  
+      </div>
+
+      <div class="full-width">
         <button type="submit" id="submitButton" class="btn">Submit</button>
         <button type="button" id="cancelEdit" class="btn delete-btn hidden">Cancel Edit</button>
-      </form>
-    </div>
-  
-    <div class="actions">
-      <div style="flex: 1;">
-        <label>Search by Company:</label>
-        <input type="text" id="searchCompany" placeholder="Search...">
       </div>
-      <div>
-        <label>Status Filter:</label>
-        <select id="statusFilter">
-          <option value="All">All</option>
-          <option value="Applied">Applied</option>
-          <option value="Rejected">Rejected</option>
-        </select>
-      </div>
-      <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+    </form>
+  </div>
+
+  <div class="actions">
+    <div style="flex: 1;">
+      <label>Search by Company:</label>
+      <input type="text" id="searchCompany" placeholder="Search..." />
     </div>
-  
-    <table id="applicationsTable">
-      <thead>
-        <tr>
-          <th>Company</th>
-          <th>Location</th>
-          <th>Profile</th>
-          <th>Mode</th>
-          <th>Date</th>
-          <th>Applied By</th>
-          <th>Status</th>
-          <th>Resume</th>
-          <th>Link</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div>
+      <label>Status Filter:</label>
+      <select id="statusFilter">
+        <option value="All">All</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Hired">Hired</option>
+      </select>
+    </div>
+    <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+  </div>
+
+  <table id="applicationsTable">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Mode</th>
+        <th>Role</th>
+        <th>Link</th>
+        <th>Date</th>
+        <th>Applied Through</th>
+        <th>Resume</th>
+        <th>Applied By</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
   <script src="script.js"></script>
 </body>
