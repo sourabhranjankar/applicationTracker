@@ -23,6 +23,7 @@ function loadApplications() {
     resumeSet.add(app.resume);
     const row = document.createElement("tr");
     row.innerHTML = `
+     <td>${index + 1}</td>
       <td>${app.company}</td>
       <td>${app.location}</td>
       <td>${app.mode}</td>

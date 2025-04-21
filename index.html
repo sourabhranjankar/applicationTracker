@@ -49,7 +49,12 @@
 
       <div>
         <label>Applied Through:</label>
-        <input type="text" id="applied_through" placeholder="LinkedIn, Referral, etc." required />
+        <select id="applied_through" required>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Indeed">Indeed</option>
+          <option value="Portal">Portal</option>
+        </select>
+        <!-- <input type="text" id="applied_through" placeholder="LinkedIn, Referral, etc." required /> -->
       </div>
 
       <div>
@@ -104,6 +109,7 @@
   <table id="applicationsTable">
     <thead>
       <tr>
+        <th>Serial No</th>
         <th>Company</th>
         <th>Location</th>
         <th>Mode</th>
