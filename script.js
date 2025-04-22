@@ -153,3 +153,41 @@ window.onload = function () {
   }
   loadApplications();
 };
+
+function importFromCSV() {
+  const fileInput = document.getElementById("csvFileInput");
+  const file = fileInput.files[0];
+  if (!file) return alert("Please select a CSV file.");
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const text = e.target.result;
+    const lines = text.split("\n").filter(Boolean);
+    const headers = lines[0].trim().split(",");
+    const requiredHeaders = [
+      "company", "location", "mode", "role", "link",
+      "date", "applied_through", "resume", "applied_by", "status"
+    ];
+
+    if (!requiredHeaders.every(h => headers.includes(h))) {
+      return alert("CSV is missing one or more required columns.");
+    }
+
+    const data = lines.slice(1).map(line => {
+      const values = line.split(",");
+      const obj = {};
+      headers.forEach((key, i) => {
+        obj[key.trim()] = values[i]?.trim() || "";
+      });
+      return obj;
+    });
+
+    const existing = JSON.parse(localStorage.getItem("applications")) || [];
+    localStorage.setItem("applications", JSON.stringify([...existing, ...data]));
+    fileInput.value = ""; // reset input
+    loadApplications();
+    alert(`${data.length} records imported successfully.`);
+  };
+  reader.readAsText(file);
+}
+
