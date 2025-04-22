@@ -3,76 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <title>Job Application Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <h2>Job Application Tracker</h2>
 
+  <!-- Form Section -->
   <div class="form-section">
     <form id="applicationForm">
       <input type="hidden" id="editIndex" value="-1" />
 
-      <div>
-        <label>Company Name:</label>
-        <input type="text" id="company" required />
-      </div>
-
-      <div>
-        <label>Location:</label>
-        <input type="text" id="location" required />
-      </div>
-
-      <div>
-        <label>Mode of Work:</label>
+      <div><label>Company Name:</label><input type="text" id="company" required /></div>
+      <div><label>Location:</label><input type="text" id="location" required /></div>
+      <div><label>Mode of Work:</label>
         <select id="mode" required>
           <option value="Remote">Remote</option>
           <option value="Hybrid">Hybrid</option>
           <option value="Onsite">Onsite</option>
         </select>
       </div>
+      <div><label>Role:</label><input type="text" id="role" required /></div>
 
-      <div>
-        <label>Role:</label>
-        <input type="text" id="role" required />
-      </div>
+      <div class="full-width"><label>Job Link:</label><input type="url" id="link" placeholder="https://example.com/job" required /></div>
 
-      <div class="full-width">
-        <label>Job Link:</label>
-        <input type="url" id="link" placeholder="https://example.com/job" required />
-      </div>
-
-      <div>
-        <label>Date of Application:</label>
-        <input type="date" id="date" required />
-      </div>
-
-      <div>
-        <label>Applied Through:</label>
+      <div><label>Date of Application:</label><input type="date" id="date" required /></div>
+      <div><label>Applied Through:</label>
         <select id="applied_through" required>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Indeed">Indeed</option>
           <option value="Portal">Portal</option>
         </select>
-        <!-- <input type="text" id="applied_through" placeholder="LinkedIn, Referral, etc." required /> -->
       </div>
-
-      <div>
-        <label>Resume Name:</label>
+      <div><label>Resume Name:</label>
         <input list="resumeOptions" id="resume" required />
         <datalist id="resumeOptions"></datalist>
       </div>
-
-      <div>
-        <label>Applied By:</label>
+      <div><label>Applied By:</label>
         <select id="applied_by" required>
           <option value="Me">Me</option>
           <option value="Other">Other</option>
         </select>
       </div>
-
-      <div>
-        <label>Status:</label>
+      <div><label>Status:</label>
         <select id="status" required>
           <option value="Applied">Applied</option>
           <option value="Interview">Interview</option>
@@ -88,14 +62,12 @@
     </form>
   </div>
 
+  <!-- Actions Section -->
   <div class="actions">
-    <div style="flex: 1;">
+    <div>
       <label>Search by Company:</label>
       <input type="text" id="searchCompany" placeholder="Search..." />
     </div>
-    <input type="file" id="csvFileInput" accept=".csv" />
-<button onclick="importFromCSV()" class="btn">Import CSV</button>
-
     <div>
       <label>Status Filter:</label>
       <select id="statusFilter">
@@ -106,29 +78,40 @@
         <option value="Hired">Hired</option>
       </select>
     </div>
-    <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+    <div>
+      <label>Import CSV:</label>
+      <input type="file" id="csvFileInput" accept=".csv" />
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="importFromCSV()" class="btn">Import CSV</button>
+      <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+    </div>
   </div>
 
-  <table id="applicationsTable">
-    <thead>
-      <tr>
-        <th>Serial No</th>
-        <th>Company</th>
-        <th>Location</th>
-        <th>Mode</th>
-        <th>Role</th>
-        <th>Link</th>
-        <th>Date</th>
-        <th>Applied Through</th>
-        <th>Resume</th>
-        <th>Applied By</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <!-- Table Section -->
+  <div class="table-wrapper">
+    <table id="applicationsTable">
+      <thead>
+        <tr>
+          <th>Serial No</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Mode</th>
+          <th>Role</th>
+          <th>Link</th>
+          <th>Date</th>
+          <th>Applied Through</th>
+          <th>Resume</th>
+          <th>Applied By</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
