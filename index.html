@@ -33,14 +33,15 @@
         <select id="applied_through" required>
           <option value="LinkedIn">LinkedIn</option>
           <option value="Indeed">Indeed</option>
-          <option value="Portal">Portal</option>
+          <option value="Portal" selected>Portal</option>
         </select>
       </div>
       <div><label>Resume Name:</label>
-        <input list="resumeOptions" id="resume" required />
-        <datalist id="resumeOptions"></datalist>
+       <input type="radio" id="resume" value="Sourabh_V3" checked>
+       <label for="resume">Sourabh_V3</label>
+
       </div>
-      <div><label>Applied By:</label>
+      <div ><label>Applied By:</label>
         <select id="applied_by" required>
           <option value="Me">Me</option>
           <option value="Other">Other</option>
@@ -78,13 +79,10 @@
         <option value="Hired">Hired</option>
       </select>
     </div>
-    <div>
-      <label>Import CSV:</label>
-      <input type="file" id="csvFileInput" accept=".csv" />
-    </div>
+    
     <div style="display: flex; gap: 10px;">
-      <button onclick="importFromCSV()" class="btn">Import CSV</button>
       <button onclick="exportToCSV()" class="btn">Export to CSV</button>
+      <button onclick="reset_storage()" class="btn">Reset</button>
     </div>
   </div>
 
