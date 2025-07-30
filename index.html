@@ -17,46 +17,15 @@
 
       <div><label>Company Name:</label><input type="text" id="company" required /></div>
       <div><label>Location:</label><input type="text" id="location" required /></div>
-      <div><label>Mode of Work:</label>
-        <select id="mode" required>
-          <option value="Remote">Remote</option>
-          <option value="Hybrid">Hybrid</option>
-          <option value="Onsite">Onsite</option>
-        </select>
-      </div>
+     
       <div><label>Role:</label><input type="text" id="role" required /></div>
 
       <div class="full-width"><label>Job Link:</label><input type="url" id="link" placeholder="https://example.com/job" required /></div>
 
       <div><label>Date of Application:</label><input type="date" id="date" required /></div>
-      <div><label>Applied Through:</label>
-        <select id="applied_through" required>
-          <option value="LinkedIn">LinkedIn</option>
-          <option value="Indeed">Indeed</option>
-          <option value="Portal" selected>Portal</option>
-        </select>
-      </div>
-      <div><label>Resume Name:</label>
-       <input type="radio" id="resume" value="Full Stack" checked>
-       <label for="resume">Full Stack</label>
-
-      </div>
-      <div ><label>Applied By:</label>
-        <select id="applied_by" required>
-          <option value="Me" selected>Me</option>
-          <option value="Radiance">Radiance</option>
-        </select>
-      </div>
-      <div><label>Status:</label>
-        <select id="status" required>
-          <option value="Applied">Applied</option>
-          <option value="Interview">Interview</option>
-          <option value="Rejected">Rejected</option>
-          <option value="Hired">Hired</option>
-        </select>
-      </div>
-
-      <div class="full-width">
+     
+     </div>
+          <div class="full-width">
         <button type="submit" id="submitButton" class="btn">Submit</button>
         <button type="button" id="cancelEdit" class="btn delete-btn hidden">Cancel Edit</button>
       </div>
@@ -73,11 +42,7 @@
       <label>Status Filter:</label>
       <select id="statusFilter">
         <option value="All">All</option>
-        <option value="Applied">Applied</option>
-        <option value="Interview">Interview</option>
-        <option value="Rejected">Rejected</option>
-        <option value="Hired">Hired</option>
-      </select>
+            </select>
     </div>
     
     <div style="display: flex; gap: 10px;">
@@ -98,11 +63,7 @@
           <th>Role</th>
           <th>Link</th>
           <th>Date</th>
-          <th>Applied Through</th>
-          <th>Resume</th>
-          <th>Applied By</th>
-          <th>Status</th>
-          <th>Action</th>
+         <th>Action</th>
         </tr>
       </thead>
       <tbody></tbody>
