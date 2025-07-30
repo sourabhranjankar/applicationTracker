@@ -62,10 +62,7 @@ form.addEventListener("submit", function (e) {
     role: document.getElementById("role").value,
     link: document.getElementById("link").value,
     date: document.getElementById("date").value,
-    applied_through: document.getElementById("applied_through").value,
-    resume: document.getElementById("resume").value,
-    applied_by: document.getElementById("applied_by").value,
-    status: document.getElementById("status").value
+  
   };
 
   const applications = JSON.parse(localStorage.getItem("applications")) || [];
@@ -103,11 +100,7 @@ function editApplication(index) {
   document.getElementById("role").value = app.role;
   document.getElementById("link").value = app.link;
   document.getElementById("date").value = app.date;
-  document.getElementById("applied_through").value = app.applied_through;
-  document.getElementById("resume").value = app.resume;
-  document.getElementById("applied_by").value = app.applied_by;
-  document.getElementById("status").value = app.status;
-
+ 
   submitButton.textContent = "Update";
   cancelEditButton.classList.remove("hidden");
 }
