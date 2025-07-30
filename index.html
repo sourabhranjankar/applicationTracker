@@ -10,67 +10,47 @@
 
   <h2>Job Application Tracker</h2>
 
-  <!-- Form Section -->
   <div class="form-section">
     <form id="applicationForm">
       <input type="hidden" id="editIndex" value="-1" />
+      <input type="hidden" id="resume" value="Full Stack" />
 
       <div><label>Company Name:</label><input type="text" id="company" required /></div>
-      <div><label>Location:</label><input type="text" id="location" required /></div>
-     
       <div><label>Role:</label><input type="text" id="role" required /></div>
-
       <div class="full-width"><label>Job Link:</label><input type="url" id="link" placeholder="https://example.com/job" required /></div>
-
       <div><label>Date of Application:</label><input type="date" id="date" required /></div>
      
-     </div>
-          <div class="full-width">
+      <div class="full-width">
         <button type="submit" id="submitButton" class="btn">Submit</button>
         <button type="button" id="cancelEdit" class="btn delete-btn hidden">Cancel Edit</button>
       </div>
     </form>
   </div>
 
-  <!-- Actions Section -->
   <div class="actions">
-    <div>
-      <label>Search by Company:</label>
-      <input type="text" id="searchCompany" placeholder="Search..." />
-    </div>
-    <div>
-      <label>Status Filter:</label>
-      <select id="statusFilter">
-        <option value="All">All</option>
-            </select>
-    </div>
-    
     <div style="display: flex; gap: 10px;">
       <button onclick="exportToCSV()" class="btn">Export to CSV</button>
       <button onclick="reset_storage()" class="btn">Reset</button>
     </div>
   </div>
 
-  <!-- Table Section -->
   <div class="table-wrapper">
     <table id="applicationsTable">
       <thead>
         <tr>
           <th>Serial No</th>
           <th>Company</th>
-          <th>Location</th>
-          <th>Mode</th>
           <th>Role</th>
           <th>Link</th>
           <th>Date</th>
-         <th>Action</th>
+          <th>Resume</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
   </div>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
